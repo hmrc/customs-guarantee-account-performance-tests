@@ -12,3 +12,4 @@ lazy val root = (project in file("."))
     testOptions in Test := Seq.empty,
     libraryDependencies ++= Dependencies.test
   )
+  .settings(useSuperShell in ThisBuild := false)
