@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,20 @@ trait GuaranteeAccountRequests {
 
   private val baseUrl: String = baseUrlFor("customs-guarantee-account-frontend")
 
-  setup("view-guarantee-account", "Guarantee account journey") withRequests(
+  val searchPayload = Map(
+    "start.month" -> "2",
+    "start.year" -> "2021",
+    "end.month" -> "3",
+    "end.year" -> "2021"
+  )
+
+  setup("view-guarantee-account", "View guarantee account details") withRequests(
     getPage("Guarantee account page", s"$baseUrl/customs/guarantee-account")
     )
+
+  setup("search-and-download-guarantee-transactions", "search and download guarantee transactions") withRequests(
+    getPage("search page", saveToken = true, s"$baseUrl/customs/guarantee-account/request-guarantee-securities"),
+    postPage("search page", s"$baseUrl/customs/guarantee-account/request-guarantee-securities", s"$baseUrl/customs/guarantee-account/requested-guarantee-securities", searchPayload),
+    getPage("download guarantee transactions", s"$baseUrl/customs/guarantee-account/download-requested-csv?disposition=inline&from=2021-02-01&to=2021-03-31")
+  )
 }

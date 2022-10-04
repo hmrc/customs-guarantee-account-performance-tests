@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,21 @@ import io.gatling.http.request.builder.HttpRequestBuilder
 
 object Requests {
 
-  def getPage(stepName: String, url: String): HttpRequestBuilder = {
+  def getPage(stepName: String, saveToken: Boolean, url: String): HttpRequestBuilder = {
     val httpRequestBuilder = http("Get " + stepName)
       .get(url)
       .check(status.is(200))
       .check(currentLocation.is(url))
+    if (saveToken) {
+      httpRequestBuilder.check(css("input[name='csrfToken']", "value").saveAs("csrfToken"))
+    }
+    else {
       httpRequestBuilder
+    }
+  }
+
+  def getPage(stepName: String, url: String): HttpRequestBuilder = {
+    getPage(stepName, saveToken = false, url)
   }
 
   def postPage(stepName: String, currentPage: String, nextPage: String, value: String): HttpRequestBuilder =
