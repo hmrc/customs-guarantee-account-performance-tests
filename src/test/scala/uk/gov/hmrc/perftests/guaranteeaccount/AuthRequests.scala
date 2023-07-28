@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,8 @@ trait AuthRequests {
     "enrolment[0].taxIdentifier[0].value" -> "${eoriNumber}"
   )
 
-  setup("login", "Login") withRequests(
+  val loginSetup = setup("login", "Login")
+  loginSetup.withRequests(
     getPage("Auth Page", authUrl),
     postPage("Post Auth Page", postToken = false, authUrl, s"$baseUrl/customs/guarantee-account", loginStubPayload)
   )
