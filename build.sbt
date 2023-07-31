@@ -4,7 +4,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "customs-guarantee-account-performance-tests",
     version := "0.1.0-SNAPSHOT",
-    scalaVersion := "2.12.13",
+    scalaVersion := "2.13.11",
     //implicitConversions & postfixOps are Gatling recommended -language settings
     scalacOptions ++= Seq("-feature", "-language:implicitConversions", "-language:postfixOps"),
     // Enabling sbt-auto-build plugin provides DefaultBuildSettings with default `testOptions` from `sbt-settings` plugin.

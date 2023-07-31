@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,8 @@ trait GuaranteeAccountRequests {
     getPage("Guarantee account page", s"$baseUrl/customs/guarantee-account")
     )
 
-  setup("search-and-download-guarantee-transactions", "search and download guarantee transactions") withRequests(
+  val searchAndDownloadSetup = setup("search-and-download-guarantee-transactions", "search and download guarantee transactions")
+  searchAndDownloadSetup.withRequests(
     getPage("search page", saveToken = true, s"$baseUrl/customs/guarantee-account/request-guarantee-securities"),
     postPage("search page", s"$baseUrl/customs/guarantee-account/request-guarantee-securities", s"$baseUrl/customs/guarantee-account/requested-guarantee-securities", searchPayload),
     getPage("download guarantee transactions", s"$baseUrl/customs/guarantee-account/download-requested-csv?disposition=inline&from=2021-02-01&to=2021-03-31")
