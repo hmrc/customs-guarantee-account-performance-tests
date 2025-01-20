@@ -19,10 +19,11 @@ package uk.gov.hmrc.perftests.guaranteeaccount
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 
-class GuaranteeAccountSimulation extends PerformanceTestRunner
-  with ServicesConfiguration
-  with AuthRequests
-  with GuaranteeAccountRequests {
+class GuaranteeAccountSimulation
+    extends PerformanceTestRunner
+    with ServicesConfiguration
+    with AuthRequests
+    with GuaranteeAccountRequests {
 
 //   Override to enable follow redirects
 //  override val httpProtocol = http
