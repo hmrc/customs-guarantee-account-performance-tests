@@ -27,14 +27,14 @@ trait AuthRequests {
   private val baseUrl: String = baseUrlFor("customs-guarantee-account-frontend")
 
   val loginStubPayload = Map(
-    "authorityId" -> "",
-    "redirectionUrl" -> (baseUrl + "/customs/guarantee-account"),
-    "credentialStrength" -> "weak",
-    "confidenceLevel" -> "50",
-    "affinityGroup" -> "Organisation",
-    "enrolment[0].state" -> "Activated",
-    "enrolment[0].name" -> "HMRC-CUS-ORG",
-    "enrolment[0].taxIdentifier[0].name" -> "EORINumber",
+    "authorityId"                         -> "",
+    "redirectionUrl"                      -> (baseUrl + "/customs/guarantee-account"),
+    "credentialStrength"                  -> "weak",
+    "confidenceLevel"                     -> "50",
+    "affinityGroup"                       -> "Organisation",
+    "enrolment[0].state"                  -> "Activated",
+    "enrolment[0].name"                   -> "HMRC-CUS-ORG",
+    "enrolment[0].taxIdentifier[0].name"  -> "EORINumber",
     "enrolment[0].taxIdentifier[0].value" -> "${eoriNumber}"
   )
 
@@ -43,6 +43,4 @@ trait AuthRequests {
     getPage("Auth Page", authUrl),
     postPage("Post Auth Page", postToken = false, authUrl, s"$baseUrl/customs/guarantee-account", loginStubPayload)
   )
-
-
 }

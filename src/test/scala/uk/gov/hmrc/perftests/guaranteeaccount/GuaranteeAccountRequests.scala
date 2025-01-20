@@ -27,19 +27,28 @@ trait GuaranteeAccountRequests {
 
   val searchPayload = Map(
     "start.month" -> "2",
-    "start.year" -> "2021",
-    "end.month" -> "3",
-    "end.year" -> "2021"
+    "start.year"  -> "2021",
+    "end.month"   -> "3",
+    "end.year"    -> "2021"
   )
 
-  setup("view-guarantee-account", "View guarantee account details") withRequests(
+  setup("view-guarantee-account", "View guarantee account details") withRequests (
     getPage("Guarantee account page", s"$baseUrl/customs/guarantee-account")
-    )
+  )
 
-  val searchAndDownloadSetup = setup("search-and-download-guarantee-transactions", "search and download guarantee transactions")
+  val searchAndDownloadSetup =
+    setup("search-and-download-guarantee-transactions", "search and download guarantee transactions")
   searchAndDownloadSetup.withRequests(
     getPage("search page", saveToken = true, s"$baseUrl/customs/guarantee-account/request-guarantee-securities"),
-    postPage("search page", s"$baseUrl/customs/guarantee-account/request-guarantee-securities", s"$baseUrl/customs/guarantee-account/requested-guarantee-securities", searchPayload),
-    getPage("download guarantee transactions", s"$baseUrl/customs/guarantee-account/download-requested-csv?disposition=inline&from=2021-02-01&to=2021-03-31")
+    postPage(
+      "search page",
+      s"$baseUrl/customs/guarantee-account/request-guarantee-securities",
+      s"$baseUrl/customs/guarantee-account/requested-guarantee-securities",
+      searchPayload
+    ),
+    getPage(
+      "download guarantee transactions",
+      s"$baseUrl/customs/guarantee-account/download-requested-csv?disposition=inline&from=2021-02-01&to=2021-03-31"
+    )
   )
 }
