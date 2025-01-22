@@ -29,7 +29,7 @@ trait AuthRequests {
   val loginStubPayload = Map(
     "authorityId"                         -> "",
     "redirectionUrl"                      -> (baseUrl + "/customs/guarantee-account"),
-    "credentialStrength"                  -> "weak",
+    "credentialStrength"                  -> "strong",
     "confidenceLevel"                     -> "50",
     "affinityGroup"                       -> "Organisation",
     "enrolment[0].state"                  -> "Activated",
