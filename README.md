@@ -1,6 +1,6 @@
 
 # customs-guarantee-account-perf-tests
-Performance test suite for the `CUSTOMS_GUARANTEE_ACCOUNT_FRONTEND - allows the user to download and view guarantee account details`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
+Performance test suite for the `CUSTOMS_GUARANTEE_ACCOUNT_FRONTEND - (allows the user to download and view guarantee account details`) using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
 
 # Pre-requisites
@@ -14,7 +14,7 @@ Make sure the following tools:technologies and configurations are in place befor
 | **Scala**                  | Required to compile & run the application. Ensure the version matches what's in build.sbt |
 | **Service Manager (sm2)**  | See [service manager](https://github.com/hmrc/service-manager) To start services locally                                      |
 | **Docker**                 | Makes it easier to run certain software tools locally without having to install them      |
-| **Mongo DB**               | Set up [Mongo DB](https://www.mongodb.com/docs/manual/installation/)using Docker                                                        |
+| **Mongo DB**               | Set up [Mongo DB](https://www.mongodb.com/docs/manual/installation/) using Docker                                                       |
 | **Git**                    | To clone the repository and manage branches                                               | 
 
 
